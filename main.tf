@@ -38,6 +38,8 @@ module "eks" {
 module "helm" {
   source = "./modules/helm"
   cluster_id = module.eks.cluster_id
+  cluster_endpoint = module.eks.cluster_endpoint
+  cluster_certificate_authority_data = module.eks.cluster_certificate_authority_data
   lbc_iam_depends_on = module.iam.lbc_iam_depends_on
   lbc_iam_role_arn   = module.iam.lbc_iam_role_arn
   vpc_id             = module.vpc.vpc_id
